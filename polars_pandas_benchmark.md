@@ -1,47 +1,60 @@
-Here are the key insights from each graph:
+# 🚀 Benchmark Highlights (Polars vs Pandas)
 
-## Graph 1: Speed Improvement (Higher = Better)
-This bar chart shows how many times faster Polars is compared to Pandas for each operation. The results are impressive across the board:
+## 📊 Graph 1: Speed (Higher = Better)
 
-- **String operations lead** with 6.9x speedup - Polars' optimized string processing really shines here
-- **Loading comes second** at 6.7x faster - Polars' efficient CSV parser significantly outperforms Pandas
-- **Filtering is 5.6x faster** - Polars' lazy evaluation and columnar processing excel at boolean operations
-- **Sorting shows 4.0x improvement** - Still substantial, though the smallest gain of the operations tested
-- **GroupBy operations are 3.6x faster** - Solid improvement for aggregation workloads
+Polars is a speed demon compared to Pandas:
 
-All operations show significant speedups well above the "no improvement" baseline, demonstrating Polars' consistent performance advantages.
+* 🔤 **Strings absolutely pop off** → **6.9x faster**
+* 📂 **Loading CSVs** → **6.7x faster**
+* 🔎 **Filtering** → **5.6x faster**
+* ↕️ **Sorting** → **4.0x faster** (still solid)
+* 👯 **GroupBy** → **3.6x faster**
 
-## Graph 2: Execution Time Comparison (Log Scale)
-This chart shows the actual execution times on a logarithmic scale, revealing the magnitude of time differences:
+👉 TL;DR: Every operation is way faster. Big W. ✅
 
-- **Loading** shows the largest absolute time gap - Pandas takes over 1 second while Polars completes in ~0.15 seconds
-- **String operations** demonstrate dramatic efficiency - Polars finishes in milliseconds while Pandas takes much longer
-- **Filtering** shows Pandas struggling with complex conditions while Polars handles them efficiently
-- **GroupBy and Sorting** show more modest but still substantial time differences
+---
 
-The log scale helps visualize how Polars consistently operates an order of magnitude faster across most operations.
+## ⏱ Graph 2: Actual Time (Log Scale)
 
-## Graph 3: Memory Usage Comparison
-This chart reveals interesting memory usage patterns:
+This one’s about real execution times, not just ratios:
 
-- **Loading shows mixed results** - Polars actually uses slightly more memory (230MB vs 200MB), likely due to its optimized internal data structures
-- **Filtering uses minimal memory** for both libraries, with Polars being more efficient
-- **GroupBy operations** show Polars using significantly more memory (115MB vs 20MB) - this suggests Polars may pre-allocate or maintain additional data structures for performance
-- **String operations** show Polars being very memory-efficient
-- **Sorting** shows similar memory usage between both libraries
+* 📂 **Loading** → Pandas crawls at 1s, Polars zooms at \~0.15s
+* 🔤 **Strings** → Polars blinks (ms), Pandas snoozes 😴
+* 🔎 **Filtering** → Pandas struggles, Polars breezes through
+* 👯/↕️ **GroupBy & Sorting** → not as dramatic, but still faster
 
-The memory story is nuanced - Polars sometimes trades memory for speed, but often achieves both better performance and efficiency.
+👉 Polars is consistently *an order of magnitude* quicker.
 
-## Graph 4: Performance Heatmap (Green = Better)
-This normalized heatmap provides an overall performance summary across all metrics:
+---
 
-- **Deep green across most cells** indicates Polars consistently outperforms Pandas
-- **The red areas in filtering and groupby memory** highlight where Polars uses more memory (matching Graph 3)
-- **String operations show perfect green** - Polars dominates in both time and memory for text processing
-- **Loading and sorting** show excellent overall performance despite some memory trade-offs
+## 🧠 Graph 3: Memory Usage
 
-The predominantly green heatmap confirms that Polars delivers superior performance across most dimensions, with memory usage being the only area where trade-offs occasionally occur.
+Here’s where it gets interesting:
 
-**Bottom Line**: Polars demonstrates 3.6-6.9x speedups across all operations while generally being more memory-efficient, making it a compelling choice for data-intensive workloads. The occasional higher memory usage appears to be a worthwhile trade-off for the substantial performance gains.
+* 📂 **Loading** → Polars uses a bit more (230MB vs 200MB)
+* 🔎 **Filtering** → Polars wins on memory
+* 👯 **GroupBy** → Polars eats more RAM (115MB vs 20MB) 🤷
+* 🔤 **Strings** → Polars super memory-efficient
+* ↕️ **Sorting** → basically the same
+
+👉 Polars sometimes spends more RAM to go fast. Trade-off vibes.
+
+---
+
+## 🌈 Graph 4: Heatmap (Green = Good)
+
+Quick visual summary:
+
+* ✅ Lots of green → Polars dominates
+* 🟥 Red pops up on **filtering + groupby memory** (Polars eats more there)
+* 🔤 Strings are pure green → total Polars flex
+* 📂 + ↕️ Still solid even with memory trade-offs
+
+---
+
+## 💡 Bottom Line
+
+Polars = 🚀 **3.6–6.9x speedups** across the board.
+Yeah, sometimes it hogs more memory, but the performance gains? **Totally worth it.**
 
 <br>

@@ -2,8 +2,6 @@
 import pathlib
 
 import dask.dataframe as dd
-import numpy as np
-import pandas as pd
 
 
 def create_large_dataset(file_path: str, num_rows: int = 1000000) -> None:
@@ -14,13 +12,15 @@ def create_large_dataset(file_path: str, num_rows: int = 1000000) -> None:
         file_path (str): Path to save the CSV file.
         num_rows (int): Number of rows to generate. Defaults to 1000000.
     """
-    np.random.seed(42)  # For reproducibility
-    data = {
-        "category": np.random.choice(["A", "B", "C", "D"], num_rows),
-        "value": np.random.uniform(10, 100, num_rows),
-    }
-    df = pd.DataFrame(data)
-    df.to_csv(file_path, index=False)
+    import dask.array as da
+    
+    da.random.seed(42)  # For reproducibility
+    categories = da.random.choice(["A", "B", "C", "D"], size=num_rows, chunks=num_rows//4)
+    values = da.random.uniform(10, 100, size=num_rows, chunks=num_rows//4)
+    
+    df = dd.from_array(categories, columns=["category"])
+    df["value"] = values
+    df.to_csv(file_path, index=False, single_file=True)
 
 
 def calculate_groupby_mean(

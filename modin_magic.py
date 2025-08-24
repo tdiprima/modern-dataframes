@@ -1,6 +1,6 @@
 """
 PriceCruncher: Calculates totals from prices and quantities
-Heavily modified, from: https://python.plainenglish.io/these-5-python-libraries-took-my-project-from-it-works-to-this-is-genius-15716787e36f
+Inspired by: https://python.plainenglish.io/these-5-python-libraries-took-my-project-from-it-works-to-this-is-genius-15716787e36f
 """
 
 import modin.pandas as pd

@@ -3,9 +3,10 @@ PriceCruncher: Calculates totals from prices and quantities
 Inspired by: https://python.plainenglish.io/these-5-python-libraries-took-my-project-from-it-works-to-this-is-genius-15716787e36f
 """
 
+import pathlib
+
 import modin.pandas as pd
 import numpy as np
-import pathlib
 
 
 def generate_sample_data(num_rows: int = 1000) -> pd.DataFrame:

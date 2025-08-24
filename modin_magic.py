@@ -5,6 +5,7 @@ Inspired by: https://python.plainenglish.io/these-5-python-libraries-took-my-pro
 
 import modin.pandas as pd
 import numpy as np
+import pathlib
 
 
 def generate_sample_data(num_rows: int = 1000) -> pd.DataFrame:
@@ -40,12 +41,15 @@ def process_data(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def main():
-    # Generate and save sample data to CSV
-    sample_df = generate_sample_data()
-    sample_df.to_csv("big_data.csv", index=False)
+    file_path = pathlib.Path("big_data.csv")
+    
+    # Generate and save sample data to CSV only if it doesn't exist
+    if not file_path.exists():
+        sample_df = generate_sample_data()
+        sample_df.to_csv(str(file_path), index=False)
     
     # Read CSV and process data
-    df = pd.read_csv("big_data.csv")
+    df = pd.read_csv(str(file_path))
     processed_df = process_data(df)
     
     # Display the first few rows

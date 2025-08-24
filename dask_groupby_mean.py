@@ -2,6 +2,7 @@
 import dask.dataframe as dd
 import numpy as np
 import pandas as pd
+import pathlib
 
 
 def create_large_dataset(file_path: str, num_rows: int = 1000000) -> None:
@@ -53,11 +54,12 @@ def calculate_groupby_mean(
 
 
 def main():
-    file_path = "large_dataset.csv"
-    create_large_dataset(file_path)
+    file_path = pathlib.Path("large_dataset.csv")
+    if not file_path.exists():
+        create_large_dataset(str(file_path))
     category_col = "category"
     value_col = "value"
-    result = calculate_groupby_mean(file_path, category_col, value_col)
+    result = calculate_groupby_mean(str(file_path), category_col, value_col)
     print(result)
 
 

@@ -3,6 +3,11 @@ __pycache__/
 *.py[codz]
 *$py.class
 
+large_dataset.csv
+big_data.csv
+
+.claude
+
 # C extensions
 *.so
 

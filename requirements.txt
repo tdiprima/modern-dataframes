@@ -1,6 +1,0 @@
-# python3.11 -m venv .venv
-polars
-modin
-modin[all]
-pyarrow
-dask

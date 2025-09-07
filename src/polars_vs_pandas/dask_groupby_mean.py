@@ -13,11 +13,13 @@ def create_large_dataset(file_path: str, num_rows: int = 1000000) -> None:
         num_rows (int): Number of rows to generate. Defaults to 1000000.
     """
     import dask.array as da
-    
+
     da.random.seed(42)  # For reproducibility
-    categories = da.random.choice(["A", "B", "C", "D"], size=num_rows, chunks=num_rows//4)
-    values = da.random.uniform(10, 100, size=num_rows, chunks=num_rows//4)
-    
+    categories = da.random.choice(
+        ["A", "B", "C", "D"], size=num_rows, chunks=num_rows // 4
+    )
+    values = da.random.uniform(10, 100, size=num_rows, chunks=num_rows // 4)
+
     df = dd.from_array(categories, columns=["category"])
     df["value"] = values
     df.to_csv(file_path, index=False, single_file=True)

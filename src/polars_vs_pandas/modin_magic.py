@@ -12,17 +12,21 @@ import numpy as np
 def generate_sample_data(num_rows: int = 1000) -> pd.DataFrame:
     """
     Generate sample data with random prices and quantities.
-    
+
     Args:
         num_rows (int): Number of rows to generate. Defaults to 1000.
-    
+
     Returns:
         pd.DataFrame: A Modin DataFrame with sample data.
     """
     np.random.seed(42)  # For reproducibility
     data = {
-        "price": np.random.uniform(10, 100, num_rows),  # Random prices between 10 and 100
-        "quantity": np.random.randint(1, 50, num_rows)  # Random quantities between 1 and 50
+        "price": np.random.uniform(
+            10, 100, num_rows
+        ),  # Random prices between 10 and 100
+        "quantity": np.random.randint(
+            1, 50, num_rows
+        ),  # Random quantities between 1 and 50
     }
     return pd.DataFrame(data)
 
@@ -30,10 +34,10 @@ def generate_sample_data(num_rows: int = 1000) -> pd.DataFrame:
 def process_data(df: pd.DataFrame) -> pd.DataFrame:
     """
     Process the data by adding a new column 'total'.
-    
+
     Args:
         df (pd.DataFrame): Input DataFrame.
-    
+
     Returns:
         pd.DataFrame: DataFrame with the added 'total' column.
     """
@@ -43,16 +47,16 @@ def process_data(df: pd.DataFrame) -> pd.DataFrame:
 
 def main():
     file_path = pathlib.Path("big_data.csv")
-    
+
     # Generate and save sample data to CSV only if it doesn't exist
     if not file_path.exists():
         sample_df = generate_sample_data()
         sample_df.to_csv(str(file_path), index=False)
-    
+
     # Read CSV and process data
     df = pd.read_csv(str(file_path))
     processed_df = process_data(df)
-    
+
     # Display the first few rows
     print(processed_df.head())
 

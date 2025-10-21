@@ -7,8 +7,10 @@ df = pl.DataFrame({
     "values": [[2, 4, 6], [3, 5, 7], [1, 8, 9]]
 })
 
+
 def calculate_percentile(series):
     return pl.Series([np.percentile(x, 80) for x in series])
+
 
 result = df.with_columns(
     pl.col("values").map_batches(calculate_percentile).alias("p80")

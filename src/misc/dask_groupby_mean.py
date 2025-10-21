@@ -57,7 +57,7 @@ def calculate_groupby_mean(
 
 
 def main():
-    file_path = pathlib.Path("large_dataset.csv")
+    file_path = pathlib.Path("../polars_vs_pandas/large_dataset.csv")
     if not file_path.exists():
         create_large_dataset(str(file_path))
     category_col = "category"

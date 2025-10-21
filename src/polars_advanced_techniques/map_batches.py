@@ -13,7 +13,7 @@ def calculate_percentile(series):
 
 
 result = df.with_columns(
-    pl.col("values").map_batches(calculate_percentile).alias("p80")
+    pl.col("values").map_batches(calculate_percentile, return_dtype=pl.Float64).alias("p80")
 )
 
 print(result)

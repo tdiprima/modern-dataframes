@@ -2,7 +2,7 @@
 
 Well now, gather 'round and let me tell y'all about the finest collection of DataFrame wrangling techniques this side of the Python repository!
 
-What started as a friendly competition between Polars and Pandas has blossomed into something mighty special. This here repo is your one-stop shop for learning how modern data processing libraries stack up against each other, and bless your heart, we've got examples that'll make your data sing.
+What started as a friendly competition between Polars and Pandas has blossomed into something mighty special. This here repo is your one-stop shop for learning how modern data processing libraries stack up against each other, and we've got examples that'll make your data sing.
 
 ## What's Cookin' in This Kitchen
 

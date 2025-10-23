@@ -10,7 +10,6 @@ requires-python = ">=3.13"
 dependencies = [
     "polars (>=1.32.3,<2.0.0)",
     "modin[all] (>=0.35.0,<0.36.0)",
-    "pyarrow (>=21.0.0,<22.0.0)",
     "dask (>=2025.7.0,<2026.0.0)"
 ]
 
